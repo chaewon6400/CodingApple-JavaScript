@@ -17,7 +17,7 @@
     ></script>
     <title>Hello, world!</title>
   </head>
-  <body>
+  <body class="main">
     <div class="black-bg">
       <div class="white-bg">
         <h4>로그인하세요</h4>
@@ -70,12 +70,27 @@
 
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
-        <span class="navbar-brand">Navbar</span>
+        <span class="navbar-brand">JSShop</span>
+        <button class="badge bg-dark">🌙 다크모드로 보기</button>
         <button class="navbar-toggler" type="button">
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
     </nav>
+    <script>
+      //badge 클릭시, 내부 글자를 Light로 변경 -> 다시 Dark -> 다시 Light -> ...
+      var count = 0;
+      $(".badge").on("click", function () {
+        count += 1;
+        if (count % 2 == 1) {
+          $(".badge").html("☀ 라이트모드로 보기");
+          $(".main").addClass("dark");
+        } else {
+          $(".badge").html("🌙 다크모드로 보기");
+          $(".main").removeClass("dark");
+        }
+      });
+    </script>
 
     <ul class="list-group">
       <li class="list-group-item">An item</li>
