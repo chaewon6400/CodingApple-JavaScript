@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 3의 배수에서는 "clap", 나머지 숫자는 "pass"
+      function threeSixNine(num) {
+        if (num % 3 == 0) {
+          console.log("clap");
+        } else {
+          console.log("pass");
+        }
+      }
+      threeSixNine(11);
+
+      // 위에서 추가 + 9의 배수에서는 "clap clap"
+      function tsnUpgrade(num) {
+        if (num % 9 == 0) {
+          console.log("clap clap");
+        } else if (num % 3 == 0) {
+          console.log("clap");
+        } else {
+          console.log("pass");
+        }
+      }
+      tsnUpgrade(15);
+
+      // 공인중개사 시험에 합격했는지 불합격했는지
+      // 개론 + 민법 >= 120점 이면 합격
+      // 단, 한 과목이라도 40점 미만이면 과락으로 불합격
+      // 과목 점수 2개를 파라미터로 입력하면 합격여부를 알려주는 함수를 만들기
+      function examPass(score1, score2) {
+        if (score1 >= 40 && score2 >= 40 && score1 + score2 >= 120) {
+          console.log("Pass");
+        } else {
+          console.log("Fail");
+        }
+      }
+      examPass(50, 50);
+    </script>
+  </body>
+</html>
