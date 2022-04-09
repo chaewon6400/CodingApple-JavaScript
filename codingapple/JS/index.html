@@ -55,9 +55,16 @@
 
       // 전송버튼 누르면
       // 저기 input에 입력한 값이 공백이면 알림창을 띄우자
-      $("form").on("submit", function () {
-        if (document.getElementById("email").value == "") {
+      $("form").on("submit", function (e) {
+        var userEmail = document.getElementById("email").value;
+        if (userEmail == "") {
           alert("아이디를 입력해주세요");
+
+          // 정규식은 구글링하면 다양하게 나옴
+        }
+        if (/\S+@\S+\.\S+/.test(userEmail)) {
+          alert("이메일 형식을 확인하세요");
+          e.preventDefault();
         }
         if (document.getElementById("password").value == "") {
           alert("비밀번호를 입력해주세요");
