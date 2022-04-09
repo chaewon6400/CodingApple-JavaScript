@@ -4,10 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
     <title>Document</title>
   </head>
   <body>
     <script>
+      // let : 재할당 가능, const : 재할당 불가능
       // 3의 배수에서는 "clap", 나머지 숫자는 "pass"
       function threeSixNine(num) {
         if (num % 3 == 0) {
@@ -42,6 +48,52 @@
         }
       }
       examPass(50, 50);
+
+      // 예금액이 5만원 미만이면 이율 연 15퍼센트, 5만원 이상이면 이율 연 20퍼센트
+      // 2년 후 총예금액을 출력하는 메서드를 만들기
+      function money() {
+        var savedMoney = 60000;
+        var futureMoney = 0;
+        if (savedMoney < 50000) {
+          futureMoney = savedMoney * 1.15 * 1.15;
+        } else {
+          futureMoney = savedMoney * 1.2 * 1.2;
+        }
+        console.log(futureMoney);
+      }
+      money();
+
+      // 방금 마신 커피의 3분의 2만큼을 총 2번 리필해주는 카페가 있다.
+      // 처음 주문한 커피 양에 따라서 최대한 마실 수 있는 커피를 콘솔창에 계산해주는 코드 작성
+      function refillCoffee() {
+        var first = 360;
+        second = (first / 3) * 2;
+        third = (second / 3) * 2;
+        coffee = first + second + third;
+        console.log(coffee);
+      }
+      refillCoffee();
+    </script>
+
+    <!-- 간단한 퀴즈 UI 만들기 -->
+    <p>태조 이성계가 태어난 년도는?</p>
+    <input type="text" id="answer" />
+    <button id="send-answer">제출</button>
+
+    <script>
+      var count = 0;
+      $("#send-answer").on("click", function () {
+        count += 1;
+        var answer = document.getElementById("answer").value;
+
+        if (answer == "1335" && count < 3) {
+          alert("정답입니다 😁");
+        } else {
+          alert("멍충멍충~ 😫");
+        }
+        console.log(count);
+        console.log(answer);
+      });
     </script>
   </body>
 </html>
