@@ -52,3 +52,15 @@
   background: black;
   color: white;
 }
+
+.slide-container {
+  width: 300vw;
+  transition: all ls;
+  /* transform: translateX(-100vw);
+   margin-left보다 부드러움 */
+}
+
+.slide-box {
+  width: 100vw;
+  float: left;
+}
