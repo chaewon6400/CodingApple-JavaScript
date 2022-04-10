@@ -4,28 +4,19 @@
 // 3. 모든 div에 붙은 show 클래스명 제거
 // 4. div 0에 show 클래스명 추가
 
-$(".tab-button")
-  .eq(0)
-  .on("click", function () {
-    $(".tab-button").removeClass("pink");
-    $(".tab-button").eq(0).addClass("pink");
-    $(".tab-content").removeClass("show");
-    $(".tab-content").eq(0).addClass("show");
-  });
-$(".tab-button")
-  .eq(1)
-  .on("click", function () {
-    $(".tab-button").removeClass("pink");
-    $(".tab-button").eq(1).addClass("pink");
-    $(".tab-content").removeClass("show");
-    $(".tab-content").eq(1).addClass("show");
-  });
+// for 반복문 쓰는 법
+// for (let i = 0; i < 3; i++) {
+//   console.log("안녕");
+// }
 
-$(".tab-button")
-  .eq(2)
-  .on("click", function () {
-    $(".tab-button").removeClass("pink");
-    $(".tab-button").eq(2).addClass("pink");
-    $(".tab-content").removeClass("show");
-    $(".tab-content").eq(2).addClass("show");
-  });
+for (let i = 0; i < $(".tab-button").length; i++) {
+  var btn = $(".tab-button");
+  $(".tab-button")
+    .eq(i)
+    .on("click", function () {
+      btn.removeClass("pink");
+      btn.eq(i).addClass("pink");
+      $(".tab-content").removeClass("show");
+      $(".tab-content").eq(i).addClass("show");
+    });
+}

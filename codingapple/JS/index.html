@@ -46,6 +46,19 @@
     </div>
 
     <script>
+      // 뒤에 까만 배경 클릭하면 로그인 모달창을 닫기
+
+      // e.target; -> 유저가 실제로 누른 것
+      // e.currentTarget; -> 이벤트리스너가 달린 곳
+      // this;
+      // e.defaultPrevented; -> 이벤트의 기본동작을 막아줌(클릭 안 한 것처럼 동작해주세요)
+      // e.stopPropagation; -> 내 상위 요소로 이벤트 버블링을 막아주세요
+      $(".black-bg").on("click", function (e) {
+        if (e.target == document.querySelector(".black-bg")) {
+          $(".black-bg").removeClass("show-modal");
+        }
+      });
+
       // <input>에서만 일어나는 이벤트
       // input 이벤트 -> <input>안 값이 변경될 때마다 실행됨
       // change 이벤트 -> <input>안 값이 변경된 후, 포커스를 잃을 때마다 실행됨
