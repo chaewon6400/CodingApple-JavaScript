@@ -14,7 +14,7 @@
 }
 
 .show {
-  height: 210px;
+  height: 200px;
   visibility: visible;
 }
 
@@ -63,4 +63,15 @@
 .slide-box {
   width: 100vw;
   float: left;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+}
+
+.navbar-brand {
+  font-size: 25px;
+  transition: all ls;
 }
