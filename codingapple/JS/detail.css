@@ -20,7 +20,7 @@ ul.list::after {
   cursor: pointer;
 }
 .pink {
-  border-top: 2px solid #e600ac;
+  border-top: 2px solid #f56d91;
   border-right: 1px solid #ccc;
   border-bottom: 1px solid white;
   border-left: 1px solid #ccc;
@@ -33,4 +33,8 @@ ul.list::after {
 }
 .show {
   display: block;
+}
+
+.form-hide {
+  display: none;
 }
