@@ -9,14 +9,23 @@
 //   console.log("안녕");
 // }
 
-for (let i = 0; i < $(".tab-button").length; i++) {
-  var btn = $(".tab-button");
-  $(".tab-button")
-    .eq(i)
-    .on("click", function () {
-      btn.removeClass("pink");
-      btn.eq(i).addClass("pink");
-      $(".tab-content").removeClass("show");
-      $(".tab-content").eq(i).addClass("show");
-    });
+// for (let i = 0; i < $(".tab-button").length; i++) {
+//   $(".tab-button")
+//     .eq(i)
+//     .on("click", function () {
+//       // 함수로 축약하기
+//       openTap(i);
+//     });
+// }
+
+// 탭기능 다르게 만들기 -> 이벤트 리스너 1개만 쓰기
+$(".list").click(function (e) {
+  openTap(e.target.dataset.id);
+});
+
+function openTap(i) {
+  $(".tab-button").removeClass("pink");
+  $(".tab-button").eq(i).addClass("pink");
+  $(".tab-content").removeClass("show");
+  $(".tab-content").eq(i).addClass("show");
 }

@@ -9,7 +9,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="detail.css" />
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -18,50 +18,47 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <style>
-      ul.list {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        border-bottom: 1px solid #ccc;
-      }
-      ul.list::after {
-        content: "";
-        display: block;
-        clear: both;
-      }
-      .tab-button {
-        display: block;
-        padding: 10px 20px 10px 20px;
-        float: left;
-        margin-right: -1px;
-        margin-bottom: -1px;
-        color: grey;
-        text-decoration: none;
-        cursor: pointer;
-      }
-      .pink {
-        border-top: 2px solid #e600ac;
-        border-right: 1px solid #ccc;
-        border-bottom: 1px solid white;
-        border-left: 1px solid #ccc;
-        color: black;
-        margin-top: -2px;
-      }
-      .tab-content {
-        display: none;
-        padding: 10px;
-      }
-      .show {
-        display: block;
-      }
-    </style>
+    <div class="container mt-3">
+      <div class="card p-3">
+        <span class="car-title">상품명</span>
+        <span class="car-price">가격</span>
+      </div>
+    </div>
+
+    <script>
+      // var car = "소나타";
+      // var carPrice = 500000;
+      // var carColor = "white";
+
+      // Array
+      var car = ["소나타", 500000, "white"];
+      // 자료 수정
+      // car[0] = "미니쿠퍼";
+      // console.log(car[0]);
+
+      // Object -> key : value 형태
+      var car2 = { name: "소나타", price: 500000, color: "white" };
+      // 자료 수정
+      // car2.price = 600000;
+      // console.log(car2["name"]);
+      // = console.log(car2.name)
+
+      // array 정렬
+      // car.sort();
+      // console.log(car);
+
+      // // array slice
+      // car.slice(1, 3);
+      // console.log(car.slice(1, 3));
+      document.querySelector(".car-title").innerHTML = car2.name;
+      document.querySelector(".car-price").innerHTML = car2.price;
+    </script>
 
     <div class="container mt-5">
       <ul class="list">
-        <li class="tab-button">Products</li>
-        <li class="tab-button pink">Information</li>
-        <li class="tab-button">Shipping</li>
+        <li class="tab-button" data-id="0">Products</li>
+        <li class="tab-button pink" data-id="1">Information</li>
+        <li class="tab-button" data-id="2">Shipping</li>
       </ul>
       <div class="tab-content">
         <p>상품설명입니다. Product</p>
