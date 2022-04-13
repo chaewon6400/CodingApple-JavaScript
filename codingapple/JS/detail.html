@@ -57,22 +57,42 @@
     </div>
 
     <script>
+      // 서버에서 보낸 데이터라고 가정
+      var pants = [26, 28, 30, 32];
+      var shirts = [85, 90, 95, 100, 105];
+
       // input 이벤트: user가 <input>안의 값을 변경할 때마다 input 이벤트 발동
       $(".form-select").on("input", function () {
         var value = $(".form-select").val();
         if (value == "셔츠") {
           $(".size-select").removeClass("form-hide");
-
-          // 바지옵션 선택하면 28,30옵션 나오게?
+          $(".size-select").html("");
+          shirts.forEach(function (shirt) {
+            var a = `<option>${shirt}</option>`;
+            $(".size-select").append(a);
+          });
         } else if (value == "바지") {
           $(".size-select").removeClass("form-hide");
-          var a = `<option>28</option>
-          <option>30</option>`;
-          $(".size-select").html(a);
+          $(".size-select").html("");
+
+          // forEach함수 사용하기
+          // forEach 안에 파라미터 2개 생성가능
+          // (첫 째는 array안의 데이터, 둘째는 0부터 1씩 증가하는 정수)
+          pants.forEach((pant) => {
+            var a = `<option>${pant}</option>`;
+            $(".size-select").append(a);
+          });
         } else {
           $(".size-select").addClass("form-hide");
         }
       });
+
+      // for in 반복문
+      var obj = { name: "kim", age: 20 };
+      for (var key in obj) {
+        console.log(key);
+        console.log(obj[key]);
+      }
     </script>
 
     <div class="container mt-5">
