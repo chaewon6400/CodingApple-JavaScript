@@ -42,6 +42,7 @@
       <select class="form-select mt-2">
         <option>모자</option>
         <option>셔츠</option>
+        <option>바지</option>
       </select>
       <select class="size-select mt-2 form-hide">
         <option>85</option>
@@ -51,11 +52,23 @@
       </select>
     </form>
 
+    <div id="test">
+      <h4>반가워!</h4>
+    </div>
+
     <script>
       // input 이벤트: user가 <input>안의 값을 변경할 때마다 input 이벤트 발동
       $(".form-select").on("input", function () {
-        if ($(".form-select").val() == "셔츠") {
+        var value = $(".form-select").val();
+        if (value == "셔츠") {
           $(".size-select").removeClass("form-hide");
+
+          // 바지옵션 선택하면 28,30옵션 나오게?
+        } else if (value == "바지") {
+          $(".size-select").removeClass("form-hide");
+          var a = `<option>28</option>
+          <option>30</option>`;
+          $(".size-select").html(a);
         } else {
           $(".size-select").addClass("form-hide");
         }
