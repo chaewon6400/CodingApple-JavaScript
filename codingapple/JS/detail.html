@@ -78,6 +78,10 @@
           // forEach함수 사용하기
           // forEach 안에 파라미터 2개 생성가능
           // (첫 째는 array안의 데이터, 둘째는 0부터 1씩 증가하는 정수)
+
+          // arrow function
+          // 단, arrow function을 쓰면 함수 안의 this 뜻이 달라질 수 있음
+          // arrow function 안에서 쓰면 바깥에 있던 this를 그대로 가져다씀
           pants.forEach((pant) => {
             var a = `<option>${pant}</option>`;
             $(".size-select").append(a);

@@ -117,6 +117,51 @@
         return result;
       }
       console.log(discount(10, true));
+
+      // Array, for문 연습문제
+      console.log("Array, for문 Practice");
+
+      var nameList = ["마크", "제노", "정우", "지성"];
+
+      function findName(name) {
+        for (var i = 0; i < nameList.length; i++) {
+          if ((name = nameList[i])) {
+            console.log("I find " + name);
+          }
+        }
+      }
+      findName("나나");
+
+      // 구구단 만들기
+      for (var i = 2; i <= 9; i++) {
+        for (var j = 1; j <= 9; j++) {
+          console.log(i * j);
+        }
+        console.log("-----");
+      }
+
+      // 평균점수 계산기 만들기
+      function scoreAverage(arr, score) {
+        var result = 0;
+
+        for (var i = 0; i < arr.length; i++) {
+          result = result + arr[i];
+        }
+        var prescoreAverage = result / arr.length;
+        if (prescoreAverage < score) {
+          console.log(
+            "저번보다 " + (score - prescoreAverage) + "점이 올랐네요💟"
+          );
+        } else if (prescoreAverage > score) {
+          console.log(
+            "저번보다 " + (prescoreAverage - score) + "점이 떨어졌네요💢"
+          );
+        } else {
+          console.log("지난번 점수랑 비교해서 변화가 없네요! 노력요망!");
+        }
+      }
+
+      scoreAverage([50, 80], 100);
     </script>
   </body>
 </html>
