@@ -18,29 +18,22 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <div class="card-group container">
-      <div class="card">
-        <img src="https://via.placeholder.com/600" />
-        <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
           <h5>Card title</h5>
           <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
         </div>
       </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/600" />
-        <div class="card-body">
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
           <h5>Card title</h5>
           <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/600" />
-        <div class="card-body">
-          <h5>Card title</h5>
-          <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
         </div>
       </div>
     </div>
@@ -51,36 +44,9 @@
         { id: 1, price: 50000, title: "Springfield Shirt" },
         { id: 2, price: 60000, title: "Black Monastery" },
       ];
-
-      for (let i = 0; i <= 2; i++) {
-        document.querySelectorAll(".card-body h5")[i].innerHTML =
-          products[i].title;
-        document.querySelectorAll(".card-body p")[i].innerHTML =
-          "price: " + products[i].price;
-      }
     </script>
 
-    <script>
-      // ajax 서버통신
-      $.get("https://codingapple1.github.io/price.json")
-        .done(function (data) {
-          console.log(data.price);
-        })
-        .fail(function () {
-          console.log("통신실패😥");
-        });
-
-      // 같은 기능을 생자바스크립트로 만들고 싶다면?
-      // fetch라는 기능 사용하기
-      fetch("https://codingapple1.github.io/price.json")
-        .then((res) => res.json()) //받아온 JSON을 object로 바꿔주는 기능
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    </script>
+    <script></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
