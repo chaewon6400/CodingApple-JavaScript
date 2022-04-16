@@ -37,9 +37,64 @@
 
       //상품목록 3개 만들어오기!
       //자바스크립트로 html생성하기!
+      for (var i = 0; i < products.length; i++) {
+        var a = `<div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
+          <h5>${products[i].title}</h5>
+          <p>가격 :  ${products[i].price}</p>
+        </div>`;
+        $(".row").append(a);
+      }
+
+      // 풀이코드
+      // products.forEach((a, i) => {
+      //   var list = `<div class="col-sm-4">
+      //     <img src="https://via.placeholder.com/600" class="w-100" />
+      //     <h5>${a.title}</h5>
+      //     <p>가격 :  ${a.price}</p>
+      //   </div>`;
+      //   $(".row").append(list);
+      // });
     </script>
 
-    <script></script>
+    <!-- 상품 더보기 버튼 만들기 -->
+    <div class="container">
+      <button class="btn btn-danger" id="more">더보기</button>
+    </div>
+
+    <script>
+      // 더보기 버튼 1번 누르면 -> 4,5,6 상품
+      // 더보기 버튼 2번 누르면 -> 7,8,9 상품 & 더보기 버튼 안 보이게
+      var cnt = 0;
+      $("#more").click(function () {
+        cnt += 1;
+        if (cnt == 1) {
+          $.get("https://codingapple1.github.io/js/more1.json").done((data) => {
+            for (var i = 0; i < data.length; i++) {
+              var a = `<div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
+          <h5>${data[i].title}</h5>
+          <p>가격 :  ${data[i].price}</p>
+        </div>`;
+              $(".row").append(a);
+            }
+          });
+        } else if (cnt == 2) {
+          $.get("https://codingapple1.github.io/js/more2.json").done((data) => {
+            for (var i = 0; i < data.length; i++) {
+              var a = `<div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
+          <h5>${data[i].title}</h5>
+          <p>가격 :  ${data[i].price}</p>
+        </div>`;
+              $(".row").append(a);
+            }
+            $("#more").css({ display: "none" });
+          });
+        } else {
+        }
+      });
+    </script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
