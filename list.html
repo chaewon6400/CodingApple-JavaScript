@@ -31,6 +31,9 @@
     <div class="container my-3">
       <button class="btn btn-danger" id="price">가격순정렬</button>
     </div>
+    <div class="container my-3">
+      <button class="btn btn-danger" id="nameSort">다나가순정렬</button>
+    </div>
 
     <script>
       var products = [
@@ -38,34 +41,15 @@
         { id: 1, price: 50000, title: "Springfield Shirt" },
         { id: 2, price: 60000, title: "Black Monastery" },
       ];
-      // array 정렬하는 법
-      var array = [7, 3, 5, 10, 18, 15];
-      // array.sort();
-      // 단 이 경우 문자순으로 정렬됨
-      // 숫자 정렬이 하고 싶은 경우! (오름차순)
-      // array.sort(function (a, b) {
-      // return a - b;
-      // (내림차순 정렬의 경우)
-      // return b - a;
-      // });
 
-      // 원하는 자료만 필터하기
-      // 조건: filter()함수의 결과는 변수에 저장해서 써야 함
-      // var newArray = array.filter(function (a) {
-      //   return a < 10;
-      // });
-
-      // console.log(newArray);
-
-      //.map(): array자료 전부 변형하려면.
-      var newArray = array.map(function (a) {
-        return a * 10;
-      });
-
-      console.log(newArray);
-
-      // .sort() : 원본 변형 O
-      // .filter() : 원본 변형 X
+      for (var i = 0; i < products.length; i++) {
+        var a = `<div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
+          <h5>${products[i].title}</h5>
+          <p>가격 :  ${products[i].price}</p>
+          </div>`;
+        $(".row").append(a);
+      }
 
       $("#price").click(function () {
         products.sort(function (a, b) {
@@ -82,14 +66,38 @@
         }
       });
 
-      for (var i = 0; i < products.length; i++) {
-        var a = `<div class="col-sm-4">
+      // var array = ["가", "나", "다"];
+      // array.sort(function (a, b) {
+      //   if (a > b) {
+      //     return -1;
+      //   } else {
+      //     return 1;
+      //   }
+      // });
+      // console.log(array);
+
+      // 상품명 기준 이름의 내림차순으로 정렬
+      // sort()의 작동원리
+      // return값이 양수면 a를 우측으로 보냄
+      // return값이 음수면 b를 우측으로 보냄
+      $("#nameSort").click(function () {
+        products.sort(function (a, b) {
+          if (a.title > b.title) {
+            return 1;
+          } else {
+            return -1;
+          }
+        });
+        $(".row").html("");
+        for (var i = 0; i < products.length; i++) {
+          var a = `<div class="col-sm-4">
           <img src="https://via.placeholder.com/600" class="w-100" />
           <h5>${products[i].title}</h5>
           <p>가격 :  ${products[i].price}</p>
-          </div>`;
-        $(".row").append(a);
-      }
+        </div>`;
+          $(".row").append(a);
+        }
+      });
 
       // 풀이코드
       // products.forEach((a, i) => {
