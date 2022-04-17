@@ -45,14 +45,40 @@
         { id: 2, price: 60000, title: "Black Monastery" },
       ];
 
+      // 구매버튼 누르면 추가될 상품명을 담을 임의의 변수
+      //  var buyList = 0; -> 이 경우 페이지 새로고침시 다시 초기값으로 변함
+      // 데이터를 반영구적으로 저장할 수 있는 방법!
+      // 브라우저 안에 몰래 데이터 저장가능
+
       for (var i = 0; i < products.length; i++) {
         var a = `<div class="col-sm-4">
           <img src="https://via.placeholder.com/600" class="w-100" />
           <h5>${products[i].title}</h5>
           <p>가격 :  ${products[i].price}</p>
+          <button class="buy">구매</button>
           </div>`;
         $(".row").append(a);
       }
+
+      // localStorage에 값 저장
+      localStorage.setItem("이름", "전채원");
+      // localStorage의 값 출력
+      localStorage.getItem("이름");
+      // localStorage의 데이터 삭제
+      localStorage.removeItem("이름");
+
+      // localStorage에 array, object 저장하려면 (편법)
+      // array/object -> JSON 으로 바꾸면 저장가능
+      // array/object -> JSON: JSON.stringify()
+      // JSON -> array/object: JSON.parse()
+
+      var arr = [1, 2, 3];
+      var newArr = JSON.stringify(arr);
+
+      localStorage.setItem("array", newArr);
+      var a = localStorage.getItem("array");
+      console.log(a);
+      console.log(JSON.parse(a)[0]);
 
       $("#price").click(function () {
         products.sort(function (a, b) {
