@@ -34,6 +34,9 @@
     <div class="container my-3">
       <button class="btn btn-danger" id="nameSort">다나가순정렬</button>
     </div>
+    <div class="container my-3">
+      <button class="btn btn-danger" id="filter">6만원이하</button>
+    </div>
 
     <script>
       var products = [
@@ -66,16 +69,6 @@
         }
       });
 
-      // var array = ["가", "나", "다"];
-      // array.sort(function (a, b) {
-      //   if (a > b) {
-      //     return -1;
-      //   } else {
-      //     return 1;
-      //   }
-      // });
-      // console.log(array);
-
       // 상품명 기준 이름의 내림차순으로 정렬
       // sort()의 작동원리
       // return값이 양수면 a를 우측으로 보냄
@@ -88,6 +81,7 @@
             return -1;
           }
         });
+
         $(".row").html("");
         for (var i = 0; i < products.length; i++) {
           var a = `<div class="col-sm-4">
@@ -99,15 +93,21 @@
         }
       });
 
-      // 풀이코드
-      // products.forEach((a, i) => {
-      //   var list = `<div class="col-sm-4">
-      //     <img src="https://via.placeholder.com/600" class="w-100" />
-      //     <h5>${a.title}</h5>
-      //     <p>가격 :  ${a.price}</p>
-      //   </div>`;
-      //   $(".row").append(list);
-      // });
+      // 버튼 누르면 6만원 이해 상품 필터링하기
+      $("#filter").click(function () {
+        var newFiltering = products.filter((a) => {
+          return a.price <= 60000;
+        });
+        $(".row").html("");
+        for (var i = 0; i < newFiltering.length; i++) {
+          var a = `<div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
+          <h5>${newFiltering[i].title}</h5>
+          <p>가격 :  ${newFiltering[i].price}</p>
+        </div>`;
+          $(".row").append(a);
+        }
+      });
     </script>
 
     <!-- 상품 더보기 버튼 만들기 -->
