@@ -50,35 +50,56 @@
       // 데이터를 반영구적으로 저장할 수 있는 방법!
       // 브라우저 안에 몰래 데이터 저장가능
 
-      for (var i = 0; i < products.length; i++) {
+      products.forEach(function (a, i) {
         var a = `<div class="col-sm-4">
           <img src="https://via.placeholder.com/600" class="w-100" />
           <h5>${products[i].title}</h5>
           <p>가격 :  ${products[i].price}</p>
-          <button class="buy">구매</button>
+          <button class="buy" id="buy">구매</button>
           </div>`;
         $(".row").append(a);
-      }
+      });
 
       // localStorage에 값 저장
-      localStorage.setItem("이름", "전채원");
+      // localStorage.setItem("이름", "전채원");
       // localStorage의 값 출력
-      localStorage.getItem("이름");
+      // localStorage.getItem("이름");
       // localStorage의 데이터 삭제
-      localStorage.removeItem("이름");
+      // localStorage.removeItem("이름");
+      // localStorage의 데이터 수정
+      // 1. 자료를 꺼냄
+      // 2. 꺼낸 거 수정
+      // 3. 다시 집어넣음
 
       // localStorage에 array, object 저장하려면 (편법)
       // array/object -> JSON 으로 바꾸면 저장가능
       // array/object -> JSON: JSON.stringify()
       // JSON -> array/object: JSON.parse()
 
-      var arr = [1, 2, 3];
-      var newArr = JSON.stringify(arr);
+      // var arr = [1, 2, 3];
+      // var newArr = JSON.stringify(arr);
 
-      localStorage.setItem("array", newArr);
-      var a = localStorage.getItem("array");
-      console.log(a);
-      console.log(JSON.parse(a)[0]);
+      // localStorage.setItem("array", newArr);
+      // var a = localStorage.getItem("array");
+      // console.log(a);
+      // console.log(JSON.parse(a)[0]);
+
+      // 1. 구매버튼 누르면 누른 상품명을localStorage에 저장하기 (array)
+      // hint 1. 내 형제요소(sibling) 찾는 법 알아봐야
+      // hint 1. localStorage가 비어있을 때/뭐가 있을 때 저장방식 다름
+      $(".buy").click(function () {
+        var title = $(e.target).siblings("h5").text();
+        console.log(title);
+        if (localStorage.getItem("cart") != null) {
+          var 꺼낸거 = JSON.parse(localStorage.cart);
+          꺼낸거.push(title);
+          localStorage.setItem("cart", JSON.stringify(꺼낸거));
+        } else {
+          localStorage.setItem("cart", JSON.stringify([title]));
+        }
+      });
+
+      // 2. cart.html 방문시 localStorage에 저장된 상품명들 다 보여주기
 
       $("#price").click(function () {
         products.sort(function (a, b) {
