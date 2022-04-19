@@ -84,14 +84,16 @@
       // console.log(a);
       // console.log(JSON.parse(a)[0]);
 
-      // 1. 구매버튼 누르면 누른 상품명을localStorage에 저장하기 (array)
+      // 1. 구매버튼 누르면 누른 상품명을 localStorage에 저장하기 (array)
       // hint 1. 내 형제요소(sibling) 찾는 법 알아봐야
       // hint 1. localStorage가 비어있을 때/뭐가 있을 때 저장방식 다름
-      $(".buy").click(function () {
+
+      // localStorage.getItem("cart") = localStorage.cart
+
+      $(".buy").click(function (e) {
         var title = $(e.target).siblings("h5").text();
-        console.log(title);
         if (localStorage.getItem("cart") != null) {
-          var 꺼낸거 = JSON.parse(localStorage.cart);
+          var 꺼낸거 = JSON.parse(localStorage.getItem("cart"));
           꺼낸거.push(title);
           localStorage.setItem("cart", JSON.stringify(꺼낸거));
         } else {
