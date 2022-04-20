@@ -8,12 +8,11 @@
   </head>
   <body>
     <div class="buyList">장바구니페이지</div>
-    <p>상품명1</p>
-    <p>상품명2</p>
+
     <script>
       var product = JSON.parse(localStorage.getItem("cart"));
-      product.forEach((a) => {
-        var a = `<p>${pant}</p>`;
+      product.forEach((cart) => {
+        var a = `<p>${cart}</p>`;
         $(".buyList").append(a);
       });
     </script>

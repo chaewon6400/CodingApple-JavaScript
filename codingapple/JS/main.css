@@ -75,3 +75,23 @@
   font-size: 25px;
   transition: all ls;
 }
+
+/* grid.html */
+.pinkarea {
+  background: pink;
+  height: 2000px;
+  margin-top: 500px;
+}
+
+.image {
+  float: right;
+  width: 400px;
+  position: sticky;
+  top: 100px;
+  /* position: sticky;를 줬으면 상단에 고정시킬 top속성도 줘야함 */
+}
+
+.text {
+  float: left;
+  width: 300px;
+}
