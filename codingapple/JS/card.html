@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="card.css" />
+  </head>
+  <body>
+    <div class="card-background">
+      <div class="card-box">
+        <img src="img/card1.png" />
+      </div>
+      <div class="card-box">
+        <img src="img/card2.png" />
+      </div>
+      <div class="card-box">
+        <img src="img/card3.png" />
+      </div>
+    </div>
+
+    <script>
+      // 스크롤 하면 위의 이미지 점점 투명해지게 만들기 (opacity)
+      // 스크롤 할때마다 뭔가 코드를 실행하려면?
+      $(window).scroll(function () {
+        var 높이 = $(window).scrollTop();
+        // console.log(높이);
+        // 650~1150 까지 스크롤바를 내리면,
+        // 첫째 카드의 opacity 1~0으로 서서히 변경해주기
+        // y : 높이가 650~1150일 때 0~1이 되는 값 임의로 y라고 정해둠
+        // y = a * 높이 + b;
+        // 근데 높이가 650일 때 y = 1 이고, (1 = a * 650 + b)
+        // 높이가 1150일 때 y = 0 임 (0 = a * 1150 + b)
+        // 계산하면 a = -1/500, b = 115/50
+        var y = (-1 / 500) * 높이 + 115 / 50;
+        $(".card-box").eq(0).css("opacity", y);
+
+        // 숙제! 카드가 작아지는 걸 구현 (transform 속성 이용)
+        var z = (-1 / 5000) * 높이 + 565 / 500;
+        $(".card-box").eq(0).css("transform", `scale( ${z} )`);
+      });
+    </script>
+  </body>
+</html>
