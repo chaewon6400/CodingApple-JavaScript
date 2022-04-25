@@ -241,9 +241,62 @@
       $(".slide-box")
         .eq(0)
         .on("mouseup", function (e) {
-          startX = e.clientX;
           mouseclick = false;
+
+          if (e.clientX - startX < -200) {
+            $(".slide-container")
+              .css("transition", "all 0.5s")
+              .css("transform", "translateX(-100vw)");
+          } else {
+            $(".slide-container")
+              .css("transition", "all 0.5s")
+              .css("transform", "translateX(0vw)");
+          }
+          setTimeout(() => {
+            $(".slide-container").css("transition", "none");
+          }, 500);
         });
+
+      // 모바일
+      // var startX = 0;
+      // var mouseclick = false;
+
+      // $(".slide-box")
+      //   .eq(0)
+      //   .on("touchdown", function (e) {
+      //     startX = e.touches[0].clientX;
+      //     mouseclick = true;
+      //   });
+
+      // $(".slide-box")
+      //   .eq(0)
+      //   .on("touchmove", function (e) {
+      //     if (mouseclick == true) {
+      //       $(".slide-container").css(
+      //         "transform",
+      //         `translateX(${e.touches[0].clientX - startX}px)`
+      //       );
+      //     }
+      //   });
+
+      // $(".slide-box")
+      //   .eq(0)
+      //   .on("touchend", function (e) {
+      //     mouseclick = false;
+
+      //     if (e.changedTouches[0].clientX - startX < -200) {
+      //       $(".slide-container")
+      //         .css("transition", "all 0.5s")
+      //         .css("transform", "translateX(-100vw)");
+      //     } else {
+      //       $(".slide-container")
+      //         .css("transition", "all 0.5s")
+      //         .css("transform", "translateX(0vw)");
+      //     }
+      //     setTimeout(() => {
+      //       $(".slide-container").css("transition", "none");
+      //     }, 500);
+      //   });
     </script>
 
     <button class="pre">이전</button>
