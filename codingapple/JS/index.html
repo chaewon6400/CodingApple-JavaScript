@@ -205,16 +205,46 @@
     <div style="overflow: hidden">
       <div class="slide-container">
         <div class="slide-box">
-          <img src="1.jpg" />
+          <img src="1.jpg" draggable="false" />
         </div>
         <div class="slide-box">
-          <img src="2.jpg" />
+          <img src="2.jpg" draggable="false" />
         </div>
         <div class="slide-box">
-          <img src="3.jpg" />
+          <img src="3.jpg" draggable="false" />
         </div>
       </div>
     </div>
+
+    <script>
+      var startX = 0;
+      var mouseclick = false;
+
+      $(".slide-box")
+        .eq(0)
+        .on("mousedown", function (e) {
+          startX = e.clientX;
+          mouseclick = true;
+        });
+
+      $(".slide-box")
+        .eq(0)
+        .on("mousemove", function (e) {
+          if (mouseclick == true) {
+            $(".slide-container").css(
+              "transform",
+              `translateX(${e.clientX - startX}px)`
+            );
+          }
+        });
+
+      $(".slide-box")
+        .eq(0)
+        .on("mouseup", function (e) {
+          startX = e.clientX;
+          mouseclick = false;
+        });
+    </script>
 
     <button class="pre">이전</button>
     <button class="slide-1">1</button>
